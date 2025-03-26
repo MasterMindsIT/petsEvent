@@ -1,11 +1,14 @@
 package com.ms_mascotas_eventos.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,13 +26,17 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String descripcion;
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private String ubicacion;
-    
+
     @ManyToOne
-    @JoinColumn(name = "comuna_id")
+    @JoinColumn(name = "comuna_id", nullable = false)
     private Comuna comuna;
+
+    @ManyToMany(mappedBy = "eventos")
+    private List<Participante> participantes;
 }

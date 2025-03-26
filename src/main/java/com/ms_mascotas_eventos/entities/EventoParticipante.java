@@ -23,12 +23,12 @@ public class EventoParticipante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne
-    @JoinColumn(name = "evento_id")
+    @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;
-    
+
     @ManyToOne
-    @JoinColumn(name = "participante_id")
+    @JoinColumn(name = "participante_id", nullable = false)
     private Participante participante;
 }
