@@ -2,22 +2,22 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.entities.Region;
+import com.ms_mascotas_eventos.dtos.RegionDTO;
 
 public interface IRegionService {
     //crear crud de region
 
     //crear metodo para obtener todas regiones
-    public List<Region> findAll();
+    public List<RegionDTO> findAll();
 
     //crear metodo para obtener region por id
-    public Region findById(Long id);
+    public RegionDTO findById(Long id);
 
     //crear metodo para guardar region
-    public Region save(Region region);
+    public RegionDTO save(RegionDTO region);
 
     //crear metodo para actualizar region
-    public Region update(Region region);
+    public RegionDTO update(RegionDTO region);
 
     //crear metodo para eliminar region
     public void delete(Long id);
