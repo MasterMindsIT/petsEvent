@@ -2,6 +2,8 @@ package com.ms_mascotas_eventos.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,5 +27,6 @@ public class TipoMascota {
     private Long id;
     private String nombre;
     @OneToMany(mappedBy = "tipoMascota")
+    @JsonIgnore
     private List<Mascota> mascotas;
 }

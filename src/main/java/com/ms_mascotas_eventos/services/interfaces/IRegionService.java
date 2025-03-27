@@ -17,7 +17,7 @@ public interface IRegionService {
     public RegionDTO save(RegionDTO region);
 
     //crear metodo para actualizar region
-    public RegionDTO update(RegionDTO region);
+    public RegionDTO update(Long id, RegionDTO region);
 
     //crear metodo para eliminar region
     public void delete(Long id);

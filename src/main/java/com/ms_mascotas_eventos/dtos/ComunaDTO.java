@@ -1,9 +1,12 @@
 package com.ms_mascotas_eventos.dtos;
 
+import java.io.Serializable;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
+import lombok.Builder;
+@Builder
 public record ComunaDTO(
     Long id,
     @NotBlank(message = "El nombre no puede estar vacío")
@@ -11,4 +14,4 @@ public record ComunaDTO(
     String nombre,
     @NotNull(message = "La región no puede ser nula")
     Long regionId
-) {}
+) implements Serializable{}

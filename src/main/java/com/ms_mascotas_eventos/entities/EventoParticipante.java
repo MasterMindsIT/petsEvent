@@ -1,6 +1,8 @@
 package com.ms_mascotas_eventos.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,5 +32,6 @@ public class EventoParticipante {
 
     @ManyToOne
     @JoinColumn(name = "participante_id", nullable = false)
+    @JsonIgnore
     private Participante participante;
 }

@@ -4,9 +4,11 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
-
+@Builder
 public record EventoDTO(
     Long id,
     @NotBlank(message = "El nombre no puede estar vacío")
@@ -25,4 +27,4 @@ public record EventoDTO(
     String ubicacion,
     @NotNull(message = "La comuna no puede ser nula")
     Long comunaId
-) {}
+) implements Serializable {}

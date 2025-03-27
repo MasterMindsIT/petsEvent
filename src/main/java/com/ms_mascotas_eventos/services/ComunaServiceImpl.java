@@ -1,33 +1,38 @@
 package com.ms_mascotas_eventos.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
 import com.ms_mascotas_eventos.dtos.ComunaDTO;
 import com.ms_mascotas_eventos.entities.Comuna;
+import com.ms_mascotas_eventos.mappers.ComunaMapper;
 import com.ms_mascotas_eventos.repositories.ComunaRepository;
 import com.ms_mascotas_eventos.services.interfaces.IComunaService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ComunaServiceImpl implements IComunaService{
 
     private final ComunaRepository comunaRepository;
-    //private final ComunaMapper comunaMapper;
-
-
+    
     @Override
     public List<ComunaDTO> findAll() {
-        
-        return null;
+        log.info("Service Todas los comunas");
+        return comunaRepository.findAll()
+                                .stream()
+                                .map(ComunaMapper::toComunaDTO)
+                                .toList();
     }
 
     @Override
     public ComunaDTO findById(Long id) {
-        //Comuna comuna = 
-        return null;
+        log.info("Service buscar comunas porID");
+        return ComunaMapper.toComunaDTO(comunaRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     @Override
@@ -36,13 +41,16 @@ public class ComunaServiceImpl implements IComunaService{
     }
 
     @Override
-    public ComunaDTO update(ComunaDTO comuna) {
+    public ComunaDTO update(Long id, ComunaDTO comuna) {
+    
         return null;
     }
 
     @Override
-    public void delete(Long id) {
-        
+    public boolean delete(Long id) {
+        Comuna deleteComuna = ComunaMapper.toComuna(this.findById(id));
+        comunaRepository.delete(deleteComuna);
+        return true;
     }
 
 }

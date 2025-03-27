@@ -18,8 +18,8 @@ public interface IComunaService {
     public ComunaDTO save(ComunaDTO comuna);
 
     //Actualizar una comuna
-    public ComunaDTO update(ComunaDTO comuna);
+    public ComunaDTO update(Long id, ComunaDTO comuna);
 
     //Eliminar una comuna
-    public void delete(Long id);
+    public boolean delete(Long id);
 }

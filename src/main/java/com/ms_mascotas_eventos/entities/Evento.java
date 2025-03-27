@@ -3,6 +3,8 @@ package com.ms_mascotas_eventos.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,8 +37,23 @@ public class Evento {
 
     @ManyToOne
     @JoinColumn(name = "comuna_id", nullable = false)
+    @JsonIgnore
     private Comuna comuna;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "eventos")
     private List<Participante> participantes;
+
+    public Evento(Long id, String nombre, String descripcion, LocalDateTime fechaInicio, LocalDateTime fechaFin,
+            String ubicacion, long comunaId) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.ubicacion = ubicacion;
+        this.comuna = this.getComuna();
+    }
+
+    
 }

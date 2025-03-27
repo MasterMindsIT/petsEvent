@@ -2,6 +2,7 @@ package com.ms_mascotas_eventos.entities;
 
 import java.util.List;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,5 +1,35 @@
 package com.ms_mascotas_eventos.controllers;
 
-public class ParticipanteController {
+import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ms_mascotas_eventos.entities.Participante;
+import com.ms_mascotas_eventos.services.interfaces.IParticipanteService;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@Slf4j
+@RequestMapping("participantes")
+@AllArgsConstructor
+public class ParticipanteController {
+private final IParticipanteService participanteService;
+
+    @GetMapping
+    public ResponseEntity<List<Participante>> GetAll() {
+        log.info("Controller todos los participante");
+        return ResponseEntity.ok(participanteService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Participante> getById(@PathVariable long id) {
+        log.info("Controller participante por ID");
+        return ResponseEntity.ok(participanteService.findById(id));
+    }
 }

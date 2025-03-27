@@ -1,20 +1,19 @@
 package com.ms_mascotas_eventos.mappers;
 
-import java.util.List;
-
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 import com.ms_mascotas_eventos.dtos.ComunaDTO;
 import com.ms_mascotas_eventos.entities.Comuna;
 
+@Component
+public class ComunaMapper {
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ComunaMapper {
-    ComunaMapper INSTANCE = Mappers.getMapper(ComunaMapper.class);
+    public static ComunaDTO toComunaDTO(Comuna comuna){
+        return new ComunaDTO(comuna.getId(), comuna.getNombre(),comuna.getRegion().getId());
+    }
 
-    ComunaDTO toComunaDTO(Comuna comuna);
-    List<ComunaDTO> toDtoList(List<Comuna> comunas);
+    public static Comuna toComuna(ComunaDTO comunaDTO) {
+        return new Comuna(comunaDTO.id(), comunaDTO.nombre(), comunaDTO.regionId());
+    }
 
 }

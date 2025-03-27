@@ -1,9 +1,12 @@
 package com.ms_mascotas_eventos.dtos;
 
+import java.io.Serializable;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
+import lombok.Builder;
+@Builder
 public record ParticipanteDTO(
     Long id,
     @NotBlank(message = "El nombre no puede estar vacío")
@@ -12,4 +15,4 @@ public record ParticipanteDTO(
     @NotBlank(message = "El email no puede estar vacío")
     @Email(message = "El email debe ser válido")
     String email
-) {}
+) implements Serializable{}

@@ -2,6 +2,8 @@ package com.ms_mascotas_eventos.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +33,7 @@ public class Participante {
     private String email;
 
     @OneToMany(mappedBy = "participante")
+    @JsonIgnore
     private List<Mascota> mascotas;
 
     @ManyToMany
@@ -39,5 +42,6 @@ public class Participante {
         joinColumns = @JoinColumn(name = "participante_id"),
         inverseJoinColumns = @JoinColumn(name = "evento_id")
     )
+    @JsonIgnore
     private List<Evento> eventos;
 }

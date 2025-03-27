@@ -2,6 +2,7 @@ package com.ms_mascotas_eventos.entities;
 
 import java.util.List;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,4 +35,10 @@ public class Comuna {
     @OneToMany(mappedBy = "comuna")
     private List<Evento> eventos;
 
+    public Comuna(Long id, String nombre, long region) {
+        this.id = id;
+        this.nombre = nombre;
+        this.region = this.getRegion();
+    }
+    
 }

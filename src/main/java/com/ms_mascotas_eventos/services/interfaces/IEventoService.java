@@ -16,7 +16,7 @@ public interface IEventoService {
     public EventoDTO save(EventoDTO evento);
 
     //Metodo para actualizar un evento
-    public EventoDTO update(EventoDTO evento);
+    public EventoDTO update(Long id, EventoDTO evento);
 
     //Metodo para eliminar un evento
     public void delete(Long id);

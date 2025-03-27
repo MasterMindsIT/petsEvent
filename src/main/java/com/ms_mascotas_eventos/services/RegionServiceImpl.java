@@ -1,47 +1,46 @@
 package com.ms_mascotas_eventos.services;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.ms_mascotas_eventos.Errors.RegionNotFoundException;
 import com.ms_mascotas_eventos.dtos.RegionDTO;
-import com.ms_mascotas_eventos.entities.Region;
 import com.ms_mascotas_eventos.mappers.RegionMapper;
 import com.ms_mascotas_eventos.repositories.RegionRepository;
 import com.ms_mascotas_eventos.services.interfaces.IRegionService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 @Service
 @AllArgsConstructor
+@Slf4j
 public class RegionServiceImpl implements IRegionService{
 
     private final RegionRepository regionRepository;
-    private final RegionMapper regionMapper;
 
     @Override
     public List<RegionDTO> findAll() {
-        return null;
+        log.info("Service Todas las Regiones");
+        return regionRepository.findAll()
+                                .stream()
+                                .map(region -> RegionMapper.toRegionDTO(region))
+                                .toList();
     }
 
     @Override
     public RegionDTO findById(Long id) {
-        Optional <Region> region = regionRepository.findById(id);
-        if(region.isEmpty()) {
-            return null;
-        }
-        return RegionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(RegionNotFoundException::new));
+        log.info("Service Obtener por ID la region");
+       return RegionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     @Override
     public RegionDTO save(RegionDTO region) {
-        Region regionEntity = regionMapper.toRegion(region);
-        return regionMapper.toRegionDTO(regionRepository.save(regionEntity));
+        return RegionMapper.toRegionDTO(regionRepository.save(RegionMapper.toRegion(region)));
     }
 
     @Override
-    public RegionDTO update(RegionDTO region) {
+    public RegionDTO update(Long id, RegionDTO region) {
         return null;
     }
 
