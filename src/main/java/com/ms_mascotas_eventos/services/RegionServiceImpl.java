@@ -1,12 +1,13 @@
 package com.ms_mascotas_eventos.services;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.ms_mascotas_eventos.Errors.RegionNotFoundException;
 import com.ms_mascotas_eventos.dtos.RegionDTO;
+import com.ms_mascotas_eventos.entities.Region;
 import com.ms_mascotas_eventos.mappers.RegionMapper;
 import com.ms_mascotas_eventos.repositories.RegionRepository;
 import com.ms_mascotas_eventos.services.interfaces.IRegionService;
@@ -26,12 +27,17 @@ public class RegionServiceImpl implements IRegionService{
 
     @Override
     public RegionDTO findById(Long id) {
-        return regionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(() -> new RegionNotFoundException("Region not found with id: " + id))); 
+        Optional <Region> region = regionRepository.findById(id);
+        if(region.isEmpty()) {
+            return null;
+        }
+        return RegionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(RegionNotFoundException::new));
     }
 
     @Override
     public RegionDTO save(RegionDTO region) {
-        return null;
+        Region regionEntity = regionMapper.toRegion(region);
+        return regionMapper.toRegionDTO(regionRepository.save(regionEntity));
     }
 
     @Override
