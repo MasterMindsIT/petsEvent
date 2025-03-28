@@ -29,11 +29,18 @@ public class Mascota {
 
     @ManyToOne
     @JoinColumn(name = "tipo_mascota_id", nullable = false)
-    @JsonIgnore
     private TipoMascota tipoMascota;
 
     @ManyToOne
     @JoinColumn(name = "participante_id", nullable = false)
-    @JsonIgnore
     private Participante participante;
+
+    public Mascota(Long id, String nombre, long tipoMascota, long participante) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipoMascota = this.getTipoMascota();
+        this.participante = this.getParticipante();
+    }
+
+    
 }

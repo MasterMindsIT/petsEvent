@@ -5,7 +5,8 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.ms_mascotas_eventos.entities.Participante;
+import com.ms_mascotas_eventos.dtos.ParticipanteDTO;
+import com.ms_mascotas_eventos.mappers.ParticipanteMapper;
 import com.ms_mascotas_eventos.repositories.ParticipanteRepository;
 import com.ms_mascotas_eventos.services.interfaces.IParticipanteService;
 
@@ -19,24 +20,27 @@ public class ParticipanteServiceImpl implements IParticipanteService{
     private final ParticipanteRepository participanteRepository;
 
     @Override
-    public List<Participante> findAll() {
+    public List<ParticipanteDTO> findAll() {
         log.info("Service Todos los participantes");
-        return participanteRepository.findAll();
+        return participanteRepository.findAll()
+                                    .stream()
+                                    .map(ParticipanteMapper::toParticipanteDTO)
+                                    .toList();
     }
 
     @Override
-    public Participante findById(Long id) {
+    public ParticipanteDTO findById(Long id) {
         log.info("Service buscar participantes por ID");
-        return participanteRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return ParticipanteMapper.toParticipanteDTO(participanteRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     @Override
-    public Participante save(Participante participante) {
+    public ParticipanteDTO save(ParticipanteDTO participante) {
         return null;
     }
 
     @Override
-    public Participante update(Long id, Participante participante) {
+    public ParticipanteDTO update(Long id, ParticipanteDTO participante) {
         return null;
     }
 

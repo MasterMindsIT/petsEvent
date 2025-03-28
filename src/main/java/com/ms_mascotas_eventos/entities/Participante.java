@@ -33,7 +33,6 @@ public class Participante {
     private String email;
 
     @OneToMany(mappedBy = "participante")
-    @JsonIgnore
     private List<Mascota> mascotas;
 
     @ManyToMany
@@ -42,6 +41,13 @@ public class Participante {
         joinColumns = @JoinColumn(name = "participante_id"),
         inverseJoinColumns = @JoinColumn(name = "evento_id")
     )
-    @JsonIgnore
     private List<Evento> eventos;
+
+    public Participante(Long id, String nombre, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
+
+    
 }

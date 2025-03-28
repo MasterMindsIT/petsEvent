@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms_mascotas_eventos.entities.Mascota;
+import com.ms_mascotas_eventos.dtos.MascotaDTO;
 import com.ms_mascotas_eventos.services.interfaces.IMascotaService;
 
 import lombok.AllArgsConstructor;
@@ -23,13 +23,14 @@ public class MascotaController {
     private final IMascotaService mascotaService;
 
     @GetMapping
-    public ResponseEntity<List<Mascota>> GetAll() {
-        log.info("Controller mascota por ID");
+    public ResponseEntity<List<MascotaDTO>> GetAll() {
+        log.info("Controller getAll");
         return ResponseEntity.ok(mascotaService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Mascota> getById(@PathVariable long id) {
+    public ResponseEntity<MascotaDTO> getById(@PathVariable long id) {
+        log.info("Controller mascota por ID");
         return ResponseEntity.ok(mascotaService.findById(id));
     }
 

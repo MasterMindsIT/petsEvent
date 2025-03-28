@@ -37,10 +37,8 @@ public class Evento {
 
     @ManyToOne
     @JoinColumn(name = "comuna_id", nullable = false)
-    @JsonIgnore
     private Comuna comuna;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "eventos")
     private List<Participante> participantes;
 

@@ -2,24 +2,23 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-
-import com.ms_mascotas_eventos.entities.Mascota;
+import com.ms_mascotas_eventos.dtos.MascotaDTO;
 
 public interface IMascotaService {
     //definir los crud de la entidad mascota
 
     //listar mascotas
-    public List<Mascota> findAll();
+    public List<MascotaDTO> findAll();
 
     //buscar por id mascota
-    public Mascota findById(Long id);
+    public MascotaDTO findById(Long id);
 
 
     //crear mascota
-    public Mascota save(Mascota mascota);
+    public MascotaDTO save(MascotaDTO mascota);
 
     //editar mascota
-    public Mascota update(Long id, Mascota mascota);
+    public MascotaDTO update(Long id, MascotaDTO mascota);
 
     //eliminar mascota
     public void delete(Long id);

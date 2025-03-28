@@ -27,6 +27,11 @@ public class TipoMascota {
     private Long id;
     private String nombre;
     @OneToMany(mappedBy = "tipoMascota")
-    @JsonIgnore
     private List<Mascota> mascotas;
+    public TipoMascota(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    
 }

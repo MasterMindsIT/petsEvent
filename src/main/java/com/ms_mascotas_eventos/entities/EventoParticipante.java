@@ -32,6 +32,5 @@ public class EventoParticipante {
 
     @ManyToOne
     @JoinColumn(name = "participante_id", nullable = false)
-    @JsonIgnore
     private Participante participante;
 }
