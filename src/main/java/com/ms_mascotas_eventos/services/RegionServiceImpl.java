@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.ms_mascotas_eventos.Errors.RegionNotFoundException;
 import com.ms_mascotas_eventos.dtos.RegionDTO;
 import com.ms_mascotas_eventos.mappers.RegionMapper;
 import com.ms_mascotas_eventos.repositories.RegionRepository;
@@ -31,7 +32,7 @@ public class RegionServiceImpl implements IRegionService{
     @Override
     public RegionDTO findById(Long id) {
         log.info("Service Obtener por ID la region");
-       return RegionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(NoSuchElementException::new));
+       return RegionMapper.toRegionDTO(regionRepository.findById(id).orElseThrow(()-> new RegionNotFoundException(id)));
     }
 
     @Override
