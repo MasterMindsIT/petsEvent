@@ -2,7 +2,7 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.dtos.MascotaDTO;
+import com.ms_mascotas_eventos.request.MascotaDTO;
 
 public interface IMascotaService {
     //definir los crud de la entidad mascota

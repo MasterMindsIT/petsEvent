@@ -1,6 +1,5 @@
 package com.ms_mascotas_eventos.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

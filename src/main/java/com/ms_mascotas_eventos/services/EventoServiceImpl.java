@@ -5,9 +5,9 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.ms_mascotas_eventos.dtos.EventoDTO;
 import com.ms_mascotas_eventos.mappers.EventoMapper;
 import com.ms_mascotas_eventos.repositories.EventoRepository;
+import com.ms_mascotas_eventos.request.EventoDTO;
 import com.ms_mascotas_eventos.services.interfaces.IEventoService;
 
 import lombok.AllArgsConstructor;

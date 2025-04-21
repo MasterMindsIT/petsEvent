@@ -5,10 +5,10 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.ms_mascotas_eventos.dtos.ComunaDTO;
 import com.ms_mascotas_eventos.entities.Comuna;
 import com.ms_mascotas_eventos.mappers.ComunaMapper;
 import com.ms_mascotas_eventos.repositories.ComunaRepository;
+import com.ms_mascotas_eventos.request.ComunaDTO;
 import com.ms_mascotas_eventos.services.interfaces.IComunaService;
 
 import lombok.AllArgsConstructor;

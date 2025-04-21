@@ -2,7 +2,7 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.dtos.ParticipanteDTO;
+import com.ms_mascotas_eventos.request.ParticipanteDTO;
 
 public interface IParticipanteService {
     //realizar crud de participantes

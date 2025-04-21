@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import jakarta.persistence.EntityNotFoundException;
 
 @ControllerAdvice 
-public class errorsAdvice {
+public class GlobalExeptionHandler {
 
     @ExceptionHandler(RegionNotFoundException.class)
     public ResponseEntity<Object> handlerRegionNotFoundException(RegionNotFoundException e){

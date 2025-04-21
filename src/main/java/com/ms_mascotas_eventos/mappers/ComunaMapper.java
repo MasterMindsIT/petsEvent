@@ -2,8 +2,8 @@ package com.ms_mascotas_eventos.mappers;
 
 import org.springframework.stereotype.Component;
 
-import com.ms_mascotas_eventos.dtos.ComunaDTO;
 import com.ms_mascotas_eventos.entities.Comuna;
+import com.ms_mascotas_eventos.request.ComunaDTO;
 
 @Component
 public class ComunaMapper {

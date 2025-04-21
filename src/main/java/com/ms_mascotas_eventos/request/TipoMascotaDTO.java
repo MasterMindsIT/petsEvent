@@ -1,4 +1,4 @@
-package com.ms_mascotas_eventos.dtos;
+package com.ms_mascotas_eventos.request;
 
 import java.io.Serializable;
 

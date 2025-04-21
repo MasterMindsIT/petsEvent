@@ -1,7 +1,5 @@
 package com.ms_mascotas_eventos.entities;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,22 +12,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+@Entity
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Entity
-public class EventoParticipante {
+public class MascotaEvento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "evento_id", nullable = false)
-    private Evento evento;
+    @JoinColumn(name = "mascota_id", nullable = false)
+    private Mascota mascota;
 
     @ManyToOne
-    @JoinColumn(name = "participante_id", nullable = false)
-    private Participante participante;
+    @JoinColumn(name = "evento_participante_id", nullable = false)
+    private EventoParticipante eventoParticipante;
+
+    
 }
+

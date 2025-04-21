@@ -1,14 +1,13 @@
 package com.ms_mascotas_eventos.services;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
 import com.ms_mascotas_eventos.Errors.RegionNotFoundException;
-import com.ms_mascotas_eventos.dtos.RegionDTO;
 import com.ms_mascotas_eventos.mappers.RegionMapper;
 import com.ms_mascotas_eventos.repositories.RegionRepository;
+import com.ms_mascotas_eventos.request.RegionDTO;
 import com.ms_mascotas_eventos.services.interfaces.IRegionService;
 
 import lombok.AllArgsConstructor;

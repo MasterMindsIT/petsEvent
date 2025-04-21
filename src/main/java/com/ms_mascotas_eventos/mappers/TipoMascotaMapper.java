@@ -2,8 +2,8 @@ package com.ms_mascotas_eventos.mappers;
 
 import org.springframework.stereotype.Component;
 
-import com.ms_mascotas_eventos.dtos.TipoMascotaDTO;
 import com.ms_mascotas_eventos.entities.TipoMascota;
+import com.ms_mascotas_eventos.request.TipoMascotaDTO;
 
 @Component
 public class TipoMascotaMapper {

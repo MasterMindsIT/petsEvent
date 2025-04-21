@@ -2,7 +2,7 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.dtos.ComunaDTO;
+import com.ms_mascotas_eventos.request.ComunaDTO;
 
 
 public interface IComunaService {

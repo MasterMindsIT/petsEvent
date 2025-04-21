@@ -2,7 +2,7 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.dtos.TipoMascotaDTO;
+import com.ms_mascotas_eventos.request.TipoMascotaDTO;
 
 public interface ITipoMascotaService {
     //Realizar crud de tipo mascota

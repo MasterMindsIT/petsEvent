@@ -3,7 +3,7 @@ package com.ms_mascotas_eventos.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms_mascotas_eventos.dtos.ComunaDTO;
+import com.ms_mascotas_eventos.request.ComunaDTO;
 import com.ms_mascotas_eventos.services.interfaces.IComunaService;
 
 import lombok.AllArgsConstructor;

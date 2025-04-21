@@ -2,7 +2,7 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.dtos.RegionDTO;
+import com.ms_mascotas_eventos.request.RegionDTO;
 
 public interface IRegionService {
     //crear crud de region

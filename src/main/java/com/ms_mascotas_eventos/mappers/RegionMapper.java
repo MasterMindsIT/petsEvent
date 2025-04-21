@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.ms_mascotas_eventos.dtos.RegionDTO;
 import com.ms_mascotas_eventos.entities.Region;
+import com.ms_mascotas_eventos.request.RegionDTO;
 @Component
 public class RegionMapper {
     
