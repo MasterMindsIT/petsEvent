@@ -3,7 +3,7 @@ package com.ms_mascotas_eventos.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms_mascotas_eventos.request.EventoDTO;
+import com.ms_mascotas_eventos.dtos.request.EventoRequest;
 import com.ms_mascotas_eventos.services.interfaces.IEventoService;
 
 import lombok.AllArgsConstructor;
@@ -25,13 +25,13 @@ public class EventoController {
     private final IEventoService eventoService;
 
     @GetMapping
-    public ResponseEntity<List<EventoDTO>> GetAll() {
+    public ResponseEntity<List<EventoRequest>> GetAll() {
         log.info("Controller todos evento");
         return ResponseEntity.ok(eventoService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventoDTO> getById(@PathVariable long id) {
+    public ResponseEntity<EventoRequest> getById(@PathVariable long id) {
         log.info("Controller evento por ID");
         return ResponseEntity.ok(eventoService.findById(id));
     }

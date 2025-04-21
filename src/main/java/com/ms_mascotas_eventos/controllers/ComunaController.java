@@ -3,7 +3,7 @@ package com.ms_mascotas_eventos.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms_mascotas_eventos.request.ComunaDTO;
+import com.ms_mascotas_eventos.dtos.request.ComunaRequest;
 import com.ms_mascotas_eventos.services.interfaces.IComunaService;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,29 +31,29 @@ public class ComunaController {
     private final IComunaService comunaService;
 
     @GetMapping
-    public ResponseEntity<List<ComunaDTO>> getAll() {
+    public ResponseEntity<List<ComunaRequest>> getAll() {
         log.info("Controller todas las comunas");
-        return ResponseEntity.ok(comunaService.findAll());
+        return null;
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<ComunaDTO> getById(@PathVariable long id) {
+    public ResponseEntity<ComunaRequest> getById(@PathVariable long id) {
         log.info("Controller comunas por ID");
-        return ResponseEntity.ok(comunaService.findById(id));
+        return null;
     }
 
     @PostMapping
-    public ResponseEntity<ComunaDTO> save(@RequestBody ComunaDTO comuna) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(comunaService.save(comuna));
+    public ResponseEntity<ComunaRequest> save(@RequestBody ComunaRequest comuna) {
+        return null;
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<ComunaDTO> update(@PathVariable Long id, @RequestBody ComunaDTO comuna) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(comunaService.update(id, comuna));
+    public ResponseEntity<ComunaRequest> update(@PathVariable Long id, @RequestBody ComunaRequest comuna) {
+        return null;
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id){
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(comunaService.delete(id));
+        return null;
     }
 }

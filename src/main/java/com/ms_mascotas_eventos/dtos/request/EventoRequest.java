@@ -1,4 +1,4 @@
-package com.ms_mascotas_eventos.request;
+package com.ms_mascotas_eventos.dtos.request;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
@@ -9,7 +9,7 @@ import lombok.Builder;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 @Builder
-public record EventoDTO(
+public record EventoRequest(
     Long id,
     @NotBlank(message = "El nombre no puede estar vacío")
     @Size(max = 255, message = "El nombre no puede tener más de 255 caracteres")

@@ -5,9 +5,9 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.ms_mascotas_eventos.dtos.request.MascotaRequest;
 import com.ms_mascotas_eventos.mappers.MascotaMapper;
 import com.ms_mascotas_eventos.repositories.MascotaRepository;
-import com.ms_mascotas_eventos.request.MascotaDTO;
 import com.ms_mascotas_eventos.services.interfaces.IMascotaService;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class MascotaServiceImpl implements IMascotaService{
     private final MascotaRepository mascotaRepository;
 
     @Override
-    public List<MascotaDTO> findAll() {
+    public List<MascotaRequest> findAll() {
         log.info("Service Todas las mascotas");
         return mascotaRepository.findAll()
                                 .stream()
@@ -29,18 +29,18 @@ public class MascotaServiceImpl implements IMascotaService{
     }
 
     @Override
-    public MascotaDTO findById(Long id) {
+    public MascotaRequest findById(Long id) {
         log.info("Service buscar por ID las Mascotas");
         return MascotaMapper.toMascotaDTO(mascotaRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     @Override
-    public MascotaDTO save(MascotaDTO mascota) {
+    public MascotaRequest save(MascotaRequest mascota) {
         return null;
     }
 
     @Override
-    public MascotaDTO update(Long id, MascotaDTO mascota) {
+    public MascotaRequest update(Long id, MascotaRequest mascota) {
         return null;
     }
 

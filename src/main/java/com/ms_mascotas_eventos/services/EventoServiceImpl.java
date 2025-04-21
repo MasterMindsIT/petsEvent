@@ -5,9 +5,9 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.ms_mascotas_eventos.dtos.request.EventoRequest;
 import com.ms_mascotas_eventos.mappers.EventoMapper;
 import com.ms_mascotas_eventos.repositories.EventoRepository;
-import com.ms_mascotas_eventos.request.EventoDTO;
 import com.ms_mascotas_eventos.services.interfaces.IEventoService;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class EventoServiceImpl implements IEventoService{
     private final EventoRepository eventoRepository;
 
     @Override
-    public List<EventoDTO> findAll() {
+    public List<EventoRequest> findAll() {
         log.info("Service Todos los Eventos");
         return eventoRepository.findAll()
                                 .stream()
@@ -29,18 +29,18 @@ public class EventoServiceImpl implements IEventoService{
     }
 
     @Override
-    public EventoDTO findById(Long id) {
+    public EventoRequest findById(Long id) {
         log.info("Service los eventos por ID");
         return EventoMapper.toEventoDTO(eventoRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     @Override
-    public EventoDTO save(EventoDTO evento) {
+    public EventoRequest save(EventoRequest evento) {
         return null;
     }
 
     @Override
-    public EventoDTO update(Long id, EventoDTO evento) {
+    public EventoRequest update(Long id, EventoRequest evento) {
         return null;
     }
 

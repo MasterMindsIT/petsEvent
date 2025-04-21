@@ -2,22 +2,22 @@ package com.ms_mascotas_eventos.services.interfaces;
 
 import java.util.List;
 
-import com.ms_mascotas_eventos.request.ParticipanteDTO;
+import com.ms_mascotas_eventos.dtos.request.ParticipanteRequest;
 
 public interface IParticipanteService {
     //realizar crud de participantes
 
     //Obtener todos los participantes
-    public List<ParticipanteDTO> findAll();
+    public List<ParticipanteRequest> findAll();
 
     //Obtener un participante por id
-    public ParticipanteDTO findById(Long id);
+    public ParticipanteRequest findById(Long id);
 
     //Crear un participante
-    public ParticipanteDTO save(ParticipanteDTO participante);
+    public ParticipanteRequest save(ParticipanteRequest participante);
 
     //Actualizar un participante
-    public ParticipanteDTO update(Long id, ParticipanteDTO participante);
+    public ParticipanteRequest update(Long id, ParticipanteRequest participante);
 
     //Eliminar un participante
     public void delete(Long id);

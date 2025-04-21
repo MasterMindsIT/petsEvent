@@ -35,10 +35,10 @@ public class Comuna {
     @OneToMany(mappedBy = "comuna")
     private List<Evento> eventos;
 
-    public Comuna(Long id, String nombre, long region) {
+    /* public Comuna(Long id, String nombre, long region) {
         this.id = id;
         this.nombre = nombre;
         this.region = this.getRegion();
     }
-    
+     */
 }

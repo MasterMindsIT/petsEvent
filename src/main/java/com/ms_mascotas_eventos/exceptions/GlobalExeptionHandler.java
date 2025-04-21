@@ -1,4 +1,4 @@
-package com.ms_mascotas_eventos.Errors;
+package com.ms_mascotas_eventos.exceptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ import jakarta.persistence.EntityNotFoundException;
 @ControllerAdvice 
 public class GlobalExeptionHandler {
 
-    @ExceptionHandler(RegionNotFoundException.class)
-    public ResponseEntity<Object> handlerRegionNotFoundException(RegionNotFoundException e){
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handlerRegionNotFoundException(EntityNotFoundException e){
         Map<String, Object> body = new HashMap<>();
         body.put("Error", "Not Found");
         body.put("Status", HttpStatus.NOT_FOUND.value());
