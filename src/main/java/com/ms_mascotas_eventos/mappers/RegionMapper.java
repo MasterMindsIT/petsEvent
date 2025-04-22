@@ -1,5 +1,6 @@
 package com.ms_mascotas_eventos.mappers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,11 +14,15 @@ import com.ms_mascotas_eventos.entities.Region;
 public class RegionMapper {
     
     public static RegionResponse toRegionResponse(Region region) {
-        List<ComunaResponseSimple> comunas = region.getComunas().stream()
+        if (!region.getComunas().isEmpty()){
+            List<ComunaResponseSimple> comunas = region.getComunas().stream()
             .map(ComunaMapper::toResponseSimple)
             .collect(Collectors.toList());
-
-        return new RegionResponse(region.getId(), region.getNombre(), comunas);
+            return new RegionResponse(region.getId(), region.getNombre(), comunas);
+        } else{
+            return new RegionResponse(region.getId(), region.getNombre(), Collections.emptyList());
+        }
+        
     }
 
     public static Region toEntity(RegionRequest dto) {

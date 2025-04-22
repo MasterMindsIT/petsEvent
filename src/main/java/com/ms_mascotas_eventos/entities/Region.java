@@ -1,5 +1,6 @@
 package com.ms_mascotas_eventos.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +28,6 @@ public class Region {
     private String nombre;
     
     @OneToMany(mappedBy = "region")
-    private List<Comuna> comunas;
+    private List<Comuna> comunas = new ArrayList<>();
 
 }

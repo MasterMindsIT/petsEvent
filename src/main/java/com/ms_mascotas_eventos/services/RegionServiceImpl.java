@@ -59,7 +59,9 @@ public class RegionServiceImpl implements IRegionService{
         if (!regionRepository.existsById(id)) {
             throw new EntityNotFoundException(Region.class, id); //si no existe lanzo una excepcion
         }
-        
+        Region regionDelete = regionRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(Region.class, id));
+        if(!regionDelete.getComunas().isEmpty())
+            return false;
         regionRepository.deleteById(id);
         return true;
     }
