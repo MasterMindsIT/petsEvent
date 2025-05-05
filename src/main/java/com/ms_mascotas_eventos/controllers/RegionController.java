@@ -2,8 +2,7 @@ package com.ms_mascotas_eventos.controllers;
 
 import java.util.List;
 
-
-
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import com.ms_mascotas_eventos.dtos.responses.RegionResponse;
 import com.ms_mascotas_eventos.dtos.responses.ResponseWrapperEntity;
 import com.ms_mascotas_eventos.dtos.responses.ResponseWrapperList;
 import com.ms_mascotas_eventos.dtos.responses.ResponseWrapperMessage;
+import com.ms_mascotas_eventos.hateoas.RegionModelAssembler;
 import com.ms_mascotas_eventos.services.interfaces.IRegionService;
 
 import jakarta.validation.Valid;
@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class RegionController {
 
     private final IRegionService regionService;
+    private final RegionModelAssembler regionModelAssembler;
 
     @GetMapping
     public ResponseEntity<?> findAll() {
@@ -41,25 +42,28 @@ public class RegionController {
         List<RegionResponse> list = regionService.findAll();
         if(list.isEmpty())
                 return ResponseEntity.ok(new ResponseWrapperMessage<>("204", 0,  "No se encontraron datos para mostrar"));
-        return ResponseEntity.ok( new ResponseWrapperList<RegionResponse>("Ok", list.size(), list));
+        List<EntityModel<RegionResponse>> listModel = list.stream()
+                                        .map(regionModelAssembler::toModel)
+                                        .toList();
+        return ResponseEntity.ok( new ResponseWrapperList<>("Ok", listModel.size(), listModel));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id) {
         log.info("Controller regiones por ID");
-        return ResponseEntity.ok(new ResponseWrapperEntity<>("200", 1,  regionService.findById(id)));
+        return ResponseEntity.ok(new ResponseWrapperEntity<>("200", 1, regionModelAssembler.toModel( regionService.findById(id))));
     }
     
     @PostMapping
     public ResponseEntity<?> save(@Valid @RequestBody RegionRequest region) {
         log.info("Controller guardar region");
-        return ResponseEntity.ok(new ResponseWrapperEntity<>("201", 1,  regionService.save(region)));
+        return ResponseEntity.ok(new ResponseWrapperEntity<>("201", 1, regionModelAssembler.toModel(  regionService.save(region))));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable long id,@Valid @RequestBody RegionRequest region) {
         log.info("Controller actualizar region por ID");
-        return  ResponseEntity.ok(new ResponseWrapperEntity<>("202", 1,  regionService.update(id, region)));
+        return  ResponseEntity.ok(new ResponseWrapperEntity<>("202", 1,regionModelAssembler.toModel( regionService.update(id, region))));
     }
     
     @DeleteMapping("/{id}")
