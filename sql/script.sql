@@ -114,3 +114,36 @@ CREATE TABLE mascota_evento (
      CONSTRAINT fk_me_mascota FOREIGN KEY (mascota_id) REFERENCES mascota(id),
      CONSTRAINT fk_me_eventopart FOREIGN KEY (evento_participante_id) REFERENCES evento_participante(id)
 );
+
+INSERT INTO region (nombre) VALUES ('Región Metropolitana');
+INSERT INTO region (nombre) VALUES ('Valparaíso');
+INSERT INTO region (nombre) VALUES ('Biobío');
+INSERT INTO comuna (nombre, region_id) VALUES ('Santiago', 1);
+INSERT INTO comuna (nombre, region_id) VALUES ('Puente Alto', 1);
+INSERT INTO comuna (nombre, region_id) VALUES ('Maipú', 1);
+INSERT INTO comuna (nombre, region_id) VALUES ('Viña del Mar', 2);
+INSERT INTO comuna (nombre, region_id) VALUES ('Valparaíso', 2);
+INSERT INTO comuna (nombre, region_id) VALUES ('Quilpué', 2);
+INSERT INTO comuna (nombre, region_id) VALUES ('Concepción', 3);
+INSERT INTO comuna (nombre, region_id) VALUES ('Talcahuano', 3);
+INSERT INTO comuna (nombre, region_id) VALUES ('Los Ángeles', 3);
+INSERT INTO tipo_mascota (nombre) VALUES ('Perro');
+INSERT INTO tipo_mascota (nombre) VALUES ('Gato');
+INSERT INTO tipo_mascota (nombre) VALUES ('Conejo');
+INSERT INTO participante (nombre, email) VALUES ('Juan Pérez', 'juan.perez@example.com');
+INSERT INTO participante (nombre, email) VALUES ('Ana López', 'ana.lopez@example.com');
+INSERT INTO participante (nombre, email) VALUES ('Carlos Díaz', 'carlos.diaz@example.com');
+INSERT INTO evento (nombre, descripcion, fecha_inicio, fecha_fin, ubicacion, comuna_id) VALUES ('Expo Mascotas', 'Evento para amantes de mascotas', TO_TIMESTAMP('2025-05-06 02:30:33', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-05-06 06:30:33', 'YYYY-MM-DD HH24:MI:SS'), 'Parque OHiggins', 1);
+INSERT INTO evento (nombre, descripcion, fecha_inicio, fecha_fin, ubicacion, comuna_id) VALUES ('Feria Animal', 'Adopciones y concursos', TO_TIMESTAMP('2025-05-07 02:30:33', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-05-07 06:30:33', 'YYYY-MM-DD HH24:MI:SS'), 'Plaza de Armas', 2);
+INSERT INTO evento (nombre, descripcion, fecha_inicio, fecha_fin, ubicacion, comuna_id) VALUES ('Concurso de Obediencia', 'Competencia de mascotas entrenadas', TO_TIMESTAMP('2025-05-08 02:30:33', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-05-08 06:30:33', 'YYYY-MM-DD HH24:MI:SS'), 'Estadio Nacional', 3);
+INSERT INTO mascota (nombre, tipo_mascota_id, participante_id) VALUES ('Firulais', 1, 1);
+INSERT INTO mascota (nombre, tipo_mascota_id, participante_id) VALUES ('Michi', 2, 2);
+INSERT INTO mascota (nombre, tipo_mascota_id, participante_id) VALUES ('Bunny', 3, 3);
+INSERT INTO evento_participante (evento_id, participante_id) VALUES (1, 1);
+INSERT INTO evento_participante (evento_id, participante_id) VALUES (2, 2);
+INSERT INTO evento_participante (evento_id, participante_id) VALUES (3, 3);
+INSERT INTO mascota_evento (mascota_id, evento_participante_id) VALUES (1, 1);
+INSERT INTO mascota_evento (mascota_id, evento_participante_id) VALUES (2, 2);
+INSERT INTO mascota_evento (mascota_id, evento_participante_id) VALUES (3, 3);
+
+commit;
